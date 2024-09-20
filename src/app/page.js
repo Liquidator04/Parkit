@@ -1,12 +1,24 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import logo from "./public/logo.png";
 import Image from "next/image";
-import { Input } from "@/components/ui/input";
+import { ThreeDCardDemo } from "@/components/threecard";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
-function page() {
+function Page() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+  const handleSignIn = () => {
+    if (status === "authenticated") {
+      router.push("/dashboard");
+    } else {
+      router.push("/signin");
+    }
+  };
   return (
     <>
-      <br></br>
+      <br />
       <div className="flex justify-between items-center w-full">
         <Image
           className="ml-8 rounded-full"
@@ -16,32 +28,31 @@ function page() {
           height={80}
         />
         <div className="flex space-x-4 mr-8">
-          {" "}
-          {/* Add margin right to the button group */}
           <Button variant="outline">About us</Button>
           <Button variant="outline">Contact us</Button>
         </div>
       </div>
 
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
+      <div className="flex justify-between items-start mt-20">
+        <div className="flex-1">
+          <ThreeDCardDemo />
+        </div>
+        <div className="flex flex-col justify-center items-center flex-1 mt-20">
+          <Button
+            onClick={handleSignIn}
+            variant="outline"
+            className="text-white py-2 px-4 rounded-lg h-20 w-40 text-xl font-sans mb-4 mt-10"
+          >
+            Get Started
+          </Button>
 
-      <div class="w-full flex justify-center mt-20">
-        <Button
-          variant="secondary"
-          className="bg-blue-500 text-white py-2 px-4 rounded mt-20 h-20 w-40"
-        >
-          Get Started
-        </Button>
+          <h1 className="text-center text-5xl md:text-7xl font-bold text-white-800 mt-20">
+            Let us find your parking
+          </h1>
+        </div>
       </div>
-
-      <h1 className="text-center text-5xl md:text-7xl font-bold text-white-800 mb-8 mt-8">
-        Let us find your parking
-      </h1>
     </>
   );
 }
 
-export default page;
+export default Page;
