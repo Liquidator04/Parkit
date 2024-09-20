@@ -88,9 +88,9 @@ While we could have used the **Google Directions API** to calculate the shortest
 The Haversine formula calculates the shortest distance between two points on Earth using their latitude and longitude. It computes the "great-circle" distance, which is the shortest path between two points on the surface of a sphere (like Earth).
 
 **Formula**:
-\[
+$$
 d = 6371 \cdot \arccos\left( \sin(\text{lat}_1) \cdot \sin(\text{lat}_2) + \cos(\text{lat}_1) \cdot \cos(\text{lat}_2) \cdot \cos(\text{long}_2 - \text{long}_1) \right)
-\]
+$$
 
 
 By using this method, we achieve accurate results without needing an external API, reducing costs and simplifying our tech stack.
