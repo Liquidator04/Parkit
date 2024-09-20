@@ -16,8 +16,8 @@ function page() {
     height={80} 
   />
   <div className="flex space-x-4 mr-8">  {/* Add margin right to the button group */}
-    <Button variant="ghost">About us</Button>
-    <Button variant="ghost">Contact us</Button>
+    <Button variant="outline">About us</Button>
+    <Button variant="outline">Contact us</Button>
   </div>
 </div>
     
@@ -27,8 +27,12 @@ function page() {
     <br></br>
     
     <div class="w-full flex justify-center mt-20">
-    <Button className="bg-blue-500 text-white py-2 px-4 rounded mt-20 h-20 w-40">Get Started</Button>
+    <Button variant="secondary" className="bg-blue-500 text-white py-2 px-4 rounded mt-20 h-20 w-40">Get Started</Button>
 </div>
+
+<h1 className="text-center text-5xl md:text-7xl font-bold text-white-800 mb-8 mt-8">
+          Let us find your parking
+        </h1>
    </>
   )
 }
