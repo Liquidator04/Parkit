@@ -1,10 +1,12 @@
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { createClient } from "@supabase/supabase-js";
 
-import { Button } from "@/components/ui/button"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -13,8 +15,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
   Locationname: z.string().min(2, {
@@ -26,23 +28,40 @@ const formSchema = z.object({
   Perhourpricing: z.string().min(2, {
     message: "Per hour pricing must be at least 2 characters.",
   }),
-})
+});
 
-    
 export function ProfileForm() {
-    // 1. Define your form.
-    const form = useForm({
-      resolver: zodResolver(formSchema),
-      defaultValues: {
-      },
-    })
-   
-    // 2. Define a submit handler.
-    function onSubmit(values) {
-      // Do something with the form values.
-      // ✅ This will be type-safe and validated.
-      console.log(values)
+  // 1. Define your form.
+  const form = useForm({
+    resolver: zodResolver(formSchema),
+    defaultValues: {},
+  });
+
+  // 2. Define a submit handler.
+  async function onSubmit(values) {
+    // Creating the host with numeric values
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    );
+    try {
+      let data = {
+        place: values.Locationname,
+        ParkingSlots: values.Parkingslots,
+        Pricing: values.Perhourpricing,
+      };
+      const res = await fetch("/api/geolocation", {
+        method: "POST",
+        header: {
+          "Content-Type": "application/json", // Specify the content type
+        },
+        body: JSON.stringify(data),
+      });
+    } catch (error) {
+      console.error(error);
     }
+  }
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -55,8 +74,7 @@ export function ProfileForm() {
               <FormControl>
                 <Input placeholder="Enter the parking location" {...field} />
               </FormControl>
-              <FormDescription>
-              </FormDescription>
+              <FormDescription></FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -68,10 +86,12 @@ export function ProfileForm() {
             <FormItem>
               <FormLabel>Parking slots</FormLabel>
               <FormControl>
-                <Input placeholder="Enter the total no of parking slots you are willing to give" {...field} />
+                <Input
+                  placeholder="Enter the total no of parking slots you are willing to give"
+                  {...field}
+                />
               </FormControl>
-              <FormDescription>
-              </FormDescription>
+              <FormDescription></FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -83,10 +103,12 @@ export function ProfileForm() {
             <FormItem>
               <FormLabel>Per hour pricing</FormLabel>
               <FormControl>
-                <Input placeholder="Enter the pricing rate per hour" {...field} />
+                <Input
+                  placeholder="Enter the pricing rate per hour"
+                  {...field}
+                />
               </FormControl>
-              <FormDescription>
-              </FormDescription>
+              <FormDescription></FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -94,5 +116,5 @@ export function ProfileForm() {
         <Button type="submit">Submit</Button>
       </form>
     </Form>
-  )
+  );
 }
