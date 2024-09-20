@@ -4,14 +4,21 @@ import logo from './public/logo.png';
 import Image from 'next/image';
 import { ThreeDCardDemo } from "@/components/threecard";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 
 
 
 function Page() {
+  const { data: session, status } = useSession();
   const router = useRouter();
   const handleSignIn = () => {
-    router.push('/signin'); 
+    if(status === "authenticated"){
+      router.push('/dashboard')
+    }
+    else{
+      router.push('/signin'); 
+    }
   };
   return (
     <>

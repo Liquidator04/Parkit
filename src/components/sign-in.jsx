@@ -23,10 +23,9 @@ export default function SignIn() {
         </CardHeader>
         <CardContent>
         <form className="flex items-center justify-center "
-        action={async () => {
-          "use server";
-          await signIn("google");
-        }}>
+        action={async () =>{
+          "use server" // Prevent default form submission
+          await signIn("google", { callbackUrl: "/dashboard" }); }}>
           <Button className="flex w-75% gap-3 items-center justify-center " type="submit"><FaGoogle /><p>Sign in with Google</p></Button>
         </form>
         </CardContent>
