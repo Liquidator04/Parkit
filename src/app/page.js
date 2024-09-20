@@ -3,24 +3,7 @@ import logo from "./public/logo.png";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 
-async function page() {
-  let data = {
-    place:
-      "VIT, Vellore Campus, Tiruvalam Rd, Katpadi, Vellore, Tamil Nadu 632014",
-  };
-  let res = await fetch("http://localhost:3000/api/geolocation", {
-    method: "POST",
-    header: {
-      "Content-Type": "application/json", // Specify the content type
-    },
-    body: JSON.stringify(data),
-  });
-  console.log("response");
-  if (res.ok) {
-    let data = await res.json;
-    console.log(data);
-  }
-
+function page() {
   return (
     <>
       <br></br>
