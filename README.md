@@ -55,6 +55,43 @@ Parkit bridges the gap between drivers looking for parking and providers offerin
 - 🏷️ **QR Code System**: Use a **QR code** to manage parking entry, exit, and payments.
 .
 
+# 🌍 Why Mapbox over Google API?
+
+We initially started with **Google Maps**, but encountered payment issues that took many hours to resolve. This led us to explore alternatives, and ultimately we chose **Mapbox** due to its flexibility and more straightforward pricing model. It provides similar features, with easier implementation and better cost control for our needs.
+
+---
+
+# 🗄️ Why Supabase?
+
+**Supabase** is built on **PostgreSQL**, a powerful relational database. It supports structured data, relationships (foreign keys, constraints), and SQL querying. This made it an ideal choice for our app, which relies on structured parking data with user relationships. Its simplicity and scalability align perfectly with our project’s needs.
+
+---
+
+# ⚔️ NEXT.js vs MERN: The Million-Dollar Question
+
+We had experience with both **MERN** and **NEXT.js** and were initially torn between the two. Here's why we went with **NEXT.js**:
+- 🛤️ **Routing**: Built-in routing simplifies the development process.
+- ⚙️ **API handling**: Managing APIs is more seamless.
+- 🖥️ **Server-Side Rendering (SSR)**: NEXT.js provides better performance with SSR.
+- 💻 **Unified frontend and backend**: NEXT.js brings both under one roof, enhancing development speed and efficiency.
+- 🎨 **Shadcn UI**: Integration with modern UI frameworks made it a clear choice.
+
+NEXT.js offered everything we needed, from SSR to smooth API handling, giving us the optimal framework to build Parkit.
+
+---
+
+# 📏 Haversine Formula vs Google Distance API
+
+While we could have used the **Google Directions API** to calculate the shortest distance between users and parking lots, we opted for the **Haversine formula**. It’s a mathematical approach that delivers the same result with less complexity.
+
+### The Haversine Formula:
+The Haversine formula calculates the shortest distance between two points on Earth using their latitude and longitude. It computes the "great-circle" distance, which is the shortest path between two points on the surface of a sphere (like Earth).
+
+**Formula**:
+Distance (d) = 6371 * arccos[(sin(lat1) * sin(lat2)) + cos(lat1) * cos(lat2) * cos(long2 - long1)]
+
+
+By using this method, we achieve accurate results without needing an external API, reducing costs and simplifying our tech stack.
 
 
 
@@ -69,6 +106,9 @@ Parkit bridges the gap between drivers looking for parking and providers offerin
 
 
 
-## Deploy on Vercel
+
+
+
+
 
 
