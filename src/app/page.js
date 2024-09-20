@@ -23,18 +23,40 @@ async function page() {
 
   return (
     <>
-      <Button variant="destructive">Click Me</Button>
       <br></br>
-      <Image
-        src={logo}
-        alt="Picture of the author"
-        width={100}
-        height={80}
-        // blurDataURL="data:..." automatically provided
-        // placeholder="blur" // Optional blur-up while loading
-      />
+      <div className="flex justify-between items-center w-full">
+        <Image
+          className="ml-8 rounded-full"
+          src={logo}
+          alt="Picture of the author"
+          width={100}
+          height={80}
+        />
+        <div className="flex space-x-4 mr-8">
+          {" "}
+          {/* Add margin right to the button group */}
+          <Button variant="outline">About us</Button>
+          <Button variant="outline">Contact us</Button>
+        </div>
+      </div>
+
       <br></br>
-      <Input className="mr-8 text-4xl" type="email" placeholder="Email" />
+      <br></br>
+      <br></br>
+      <br></br>
+
+      <div class="w-full flex justify-center mt-20">
+        <Button
+          variant="secondary"
+          className="bg-blue-500 text-white py-2 px-4 rounded mt-20 h-20 w-40"
+        >
+          Get Started
+        </Button>
+      </div>
+
+      <h1 className="text-center text-5xl md:text-7xl font-bold text-white-800 mb-8 mt-8">
+        Let us find your parking
+      </h1>
     </>
   );
 }
