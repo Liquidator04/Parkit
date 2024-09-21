@@ -1,21 +1,30 @@
 "use client";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useRef } from "react";
 import QRCode from "qrcode-generator";
 
-const QRPage = ({params}) => {
-  const router = useRouter();
-  console.log(params.id);
-  const { orderId } = params.id
-  const [qrCode, setQrCode] = useState("");
+const QRPage = ({ params }) => {
+  const { id: orderId } = params; // Destructure to get the orderId
+  const canvasRef = useRef(null);
 
   useEffect(() => {
     if (orderId) {
-      // Generate the QR code
-      const qr = QRCode(0, 'L'); // 0 for numeric, 'L' for error correction level
+      const qr = QRCode(0, 'L');
       qr.addData(`Order ID: ${orderId}`);
       qr.make();
-      setQrCode(qr.createDataURL(4)); // 4 is the size
+
+      const canvas = canvasRef.current;
+      const ctx = canvas.getContext('2d');
+      const size = 256; // Size of the QR code
+      canvas.width = size;
+      canvas.height = size;
+
+      // Draw the QR code on the canvas
+      const qrData = qr.createDataURL(4);
+      const img = new Image();
+      img.onload = () => {
+        ctx.drawImage(img, 0, 0);
+      };
+      img.src = qrData; // Use the generated data URL
     }
   }, [orderId]);
 
@@ -23,9 +32,7 @@ const QRPage = ({params}) => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
       <h1 className="text-3xl font-bold mb-4 text-gray-900">Your QR Code</h1>
       <p className="text-xl mb-6 text-gray-700">Order ID: {orderId}</p>
-      {qrCode && (
-        <img src={qrCode} alt="QR Code" />
-      )}
+      <canvas ref={canvasRef} />
     </div>
   );
 };
