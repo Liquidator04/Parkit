@@ -112,7 +112,7 @@ export function DrawerDemo() {
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button variant="secondary">Search for parking</Button>
+        <Button className="bg-purple-500">Search for parking</Button>
       </DrawerTrigger>
       <DrawerContent>
         <div className="mx-auto w-full max-w-sm">
