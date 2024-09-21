@@ -13,15 +13,13 @@ export let sortedarray;
 export function WavyBackgroundDemo() {
   const { data: session, status } = useSession();
   const router = useRouter();
-
   return (
     <div className="flex max-w-full  max-h-screen overflow-hidden">
-      <div className="pb-40 mb-10 ">
-        <WavyBackground className=" flex justify-between gap-20 items-center">
-          <div>
-            <div className="flex justify-between items-center ">
-              <div className="flex space-x-4 ml-10 ">
-                <DrawerDemo />
+      <div className="">
+        <div className=" flex justify-between gap-20 items-start">
+          <div className="w-screen">
+            <div className="flex justify-between items-center mt-10">
+              <div className="flex space-x-4 ml-10 mr-3">
                 <Button
                   variant="outline"
                   onClick={() => router.push("/hostform")}
@@ -32,19 +30,27 @@ export function WavyBackgroundDemo() {
               <Button
                 variant="outline"
                 onClick={async () => {
-                  await signOut("google", { callbackUrl: "/" });
+                  await signOut({ callbackUrl: "/", redirect: true });
+                  console.log("Right after sign out");
                 }}
               >
                 Sign Out
               </Button>
             </div>
-
-            <p className="mt-20 text-2xl md:text-4xl lg:text-7xl text-white font-bold inter-var text-center">
-              Welcome, {session.user.name}
-            </p>
-            <p className="text-base md:text-lg mt-4 text-white font-normal inter-var text-center">
-              Leverage the power of Parkit to get hassel free parking.
-            </p>
+            <div className="ml-10">
+              <p className="mt-40 text-2xl md:text-4xl lg:text-7xl text-white font-bold inter-var text-center">
+                Hello,{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-sky-500">
+                  {session.user.name}
+                </span>
+              </p>
+              <p className="text-base md:text-lg mt-4 text-white font-normal inter-var text-center">
+                Leverage Parkit to get hassel free parking.
+              </p>
+            </div>
+            <div className="flex justify-center mt-5">
+              <DrawerDemo />
+            </div>
           </div>
           <Image
             src={map} // Replace with your image path
@@ -52,9 +58,9 @@ export function WavyBackgroundDemo() {
             layout="responsive" // Adjust as necessary
             width={9} // Set to the actual width of your image
             height={70} // Set to the actual height of your image
-            className="object-cover  w-full z-50 h-lvh ml-20" // Make the image cover the area
+            className="z-50 h-lvh ml-20" // Make the image cover the area
           />
-        </WavyBackground>
+        </div>
       </div>
 
       {/* Right Side: Image */}

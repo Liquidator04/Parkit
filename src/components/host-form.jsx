@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label"; // Import your Label component
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   Locationname: z.string().min(2, {
@@ -28,6 +29,7 @@ const formSchema = z.object({
 });
 
 export function ProfileForm() {
+  const router = useRouter();
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {},
@@ -51,6 +53,7 @@ export function ProfileForm() {
         },
         body: JSON.stringify(data),
       });
+      router.push("/dashboard");
     } catch (error) {
       console.error(error);
     }
@@ -58,7 +61,9 @@ export function ProfileForm() {
 
   return (
     <div className="max-w-md mt-20 w-full mx-auto p-6 rounded-2xl shadow-input bg-white dark:bg-black">
-      <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">Parking Details</h2>
+      <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
+        Parking Details
+      </h2>
       <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
         Please fill in the details of your parking location.
       </p>
@@ -84,7 +89,10 @@ export function ProfileForm() {
               <div className="flex flex-col space-y-2">
                 <FormLabel>Parking slots</FormLabel>
                 <FormControl>
-                  <Input placeholder="Total number of parking slots" {...field} />
+                  <Input
+                    placeholder="Total number of parking slots"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </div>
