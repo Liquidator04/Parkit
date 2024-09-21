@@ -13,7 +13,6 @@ export let sortedarray;
 export function WavyBackgroundDemo() {
   const { data: session, status } = useSession();
   const router = useRouter();
-
   return (
     <div className="flex max-w-full  max-h-screen overflow-hidden">
       <div className="pb-40 mb-10 ">
@@ -32,7 +31,8 @@ export function WavyBackgroundDemo() {
               <Button
                 variant="outline"
                 onClick={async () => {
-                  await signOut("google", { callbackUrl: "/" });
+                  await signOut({ callbackUrl: "/", redirect: true });
+                  console.log("Right after sign out");
                 }}
               >
                 Sign Out
