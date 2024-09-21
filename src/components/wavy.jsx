@@ -16,7 +16,7 @@ export function WavyBackgroundDemo() {
   return (
     <div className="flex max-w-full  max-h-screen overflow-hidden">
       <div className="">
-        <div className=" flex justify-between gap-20 items-start">
+        <div className=" flex justify-between items-start">
           <div className="w-screen">
             <div className="flex justify-between items-center mt-10">
               <div className="flex space-x-4 ml-10 mr-3">
