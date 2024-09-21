@@ -1,10 +1,12 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import logo from "./public/logo.png";
+import logo from "./public/logo.jpeg";
 import Image from "next/image";
 import { ThreeDCardDemo } from "@/components/threecard";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import home from "../app/public/home.jpg"
+
 
 function Page() {
   const { data: session, status } = useSession();
@@ -18,8 +20,9 @@ function Page() {
   };
   return (
     <>
+
       <br />
-      <div className="flex justify-between items-center w-full">
+      <div className="flex justify-between items-center w-full  style={{ backgroundImage: `url(${home.src})` }}">
         <Image
           className="ml-8 rounded-full"
           src={logo}
@@ -51,6 +54,7 @@ function Page() {
           </h1>
         </div>
       </div>
+      
     </>
   );
 }
