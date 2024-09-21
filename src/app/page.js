@@ -28,8 +28,12 @@ function Page() {
           height={80}
         />
         <div className="flex space-x-4 mr-8">
-          <Button variant="outline">About us</Button>
-          <Button variant="outline">Contact us</Button>
+          <Button variant="outline" onClick={() => router.push("/aboutus")}>
+            About us
+          </Button>
+          <Button variant="outline" onClick={() => router.push("/contactus")}>
+            Contact us
+          </Button>
         </div>
       </div>
 
