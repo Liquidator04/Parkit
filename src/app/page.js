@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import logo from "./public/logo.jpeg";
+import logo from "./public/logo.png";
 import Image from "next/image";
 import { ThreeDCardDemo } from "@/components/threecard";
 import { useRouter } from "next/navigation";
