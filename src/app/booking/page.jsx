@@ -24,6 +24,7 @@ import {
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 export const Logo = () => {
   return (
@@ -114,6 +115,7 @@ const BookParking = () => {
     process.env.NEXT_PUBLIC_SUPABASE_URL,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   );
+  const router = useRouter();
   const arr_id = arr;
   console.log("arr");
   console.log(arr_id);
@@ -190,6 +192,7 @@ const BookParking = () => {
           alert(
             `QR Code scanned successfully! Remaining bookings: ${counter - 1}`
           );
+          router.push("/payment");
           // Reset booking status and QR code
           setIsBooked(false);
           setQrCode("");
