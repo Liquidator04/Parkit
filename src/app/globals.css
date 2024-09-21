@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .shadow-glow {
+    box-shadow: 0 0 15px rgba(0, 128, 255, 0.5), 0 0 30px rgba(0, 128, 255, 0.3);
+  }
+}
 :root {
   --background: #ffffff;
   --foreground: #171717;

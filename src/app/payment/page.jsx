@@ -2,10 +2,12 @@
 import React, { useState } from "react";
 import Script from "next/script";
 
+import { useRouter } from "next/navigation"; // Import useRouter
+
 const PaymentPage = () => {
   const [hours, setHours] = useState(1); // Default to 1 hour
   const [isProcessing, setIsProcessing] = useState(false);
-
+  const router = useRouter();
   const RATE_PER_HOUR = 10;
   const AMOUNT = hours * RATE_PER_HOUR; // Calculate amount based on hours
 
@@ -31,7 +33,7 @@ const PaymentPage = () => {
         order_id: data.orderId, // Order ID from the backend
         handler: function (response) {
           console.log("Payment Successful", response);
-         
+          router.push(`/parkingqr/${data.orderId}`);
         },
         prefill: {
           name: "John Doe",
