@@ -9,7 +9,7 @@ module.exports = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/**/*.{ts,tsx}", // Include this to capture all TypeScript files
+    "./src/**/*.{ts,tsx}",
   ],
   theme: {
     extend: {
@@ -59,7 +59,16 @@ module.exports = {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)'
-      }
+      },
+      animation: {
+        move: "move 5s linear infinite",
+      },
+      keyframes: {
+        move: {
+          "0%": { transform: "translateX(-200px)" },
+          "100%": { transform: "translateX(200px)" },
+        },
+      },
     }
   },
   plugins: [
