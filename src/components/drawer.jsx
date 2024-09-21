@@ -13,10 +13,13 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const data = Array.from({ length: 48 }, (_, i) => ({ goal: i + 1 }));
+export let arr;
 
 export function DrawerDemo() {
+  const router = useRouter();
   const [hours, setHours] = React.useState(12); // Default to 24 hours
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -24,6 +27,7 @@ export function DrawerDemo() {
   );
   let [lat, setLat] = useState(0);
   let [lng, setLng] = useState(0);
+  const [idSorted, setIdSorted] = useState(0);
   navigator.geolocation.getCurrentPosition(function (position) {
     setLat(position.coords.latitude);
     setLng(position.coords.longitude);
@@ -99,6 +103,10 @@ export function DrawerDemo() {
     console.log("arr1: ", arr1);
     console.log("arr2: ", arr2);
     console.log("arr3: ", arr3);
+
+    arr = arr1;
+
+    router.push("/booking");
   }
 
   return (
