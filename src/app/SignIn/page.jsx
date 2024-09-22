@@ -4,10 +4,8 @@ function page() {
   return (
     <div>
       
-      <BackgroundBoxesDemo/>
-      <br/>
-      <br/>
-      <br/>
+      
+     
       <SignIn />
     </div>
   );
