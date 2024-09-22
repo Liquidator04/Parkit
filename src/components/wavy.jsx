@@ -7,6 +7,12 @@ import { DrawerDemo } from "@/components/drawer";
 import Image from "next/image"; // Make sure to import Image from Next.js
 import map from "../../src/app/public/map.jpg";
 import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
+
+// Dynamically import Map to prevent SSR issues with mapbox-gl
+const Map = dynamic(() => import("../components/Map"), {
+  ssr: false,
+});
 
 export let sortedarray;
 
@@ -16,8 +22,8 @@ export function WavyBackgroundDemo() {
   return (
     <div className="flex max-w-full  max-h-screen overflow-hidden">
       <div className="">
-        <div className=" flex justify-between items-start">
-          <div className="w-screen">
+        <div className=" flex items-start w-screen">
+          <div className="w-1/2">
             <div className="flex justify-between items-center mt-10">
               <div className="flex space-x-4 ml-10 mr-3">
                 <Button
@@ -52,14 +58,15 @@ export function WavyBackgroundDemo() {
               <DrawerDemo />
             </div>
           </div>
-          <Image
+          <Map />
+          {/* <Image
             src={map} // Replace with your image path
             alt="Description of the image"
             layout="responsive" // Adjust as necessary
             width={9} // Set to the actual width of your image
             height={70} // Set to the actual height of your image
             className="z-50 h-lvh ml-20" // Make the image cover the area
-          />
+          /> */}
         </div>
       </div>
 
