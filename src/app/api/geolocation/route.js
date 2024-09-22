@@ -33,6 +33,7 @@ export async function POST(request) {
         const { insertData, error } = await supabase
           .from("Host")
           .insert({
+            Place: hostData.place,
             longitude: longitude,
             latitude: latitude,
             ParkingSlots: hostData.ParkingSlots,
