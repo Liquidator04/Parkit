@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useSession, signOut } from "next-auth/react";
 import QRCode from "qrcode-generator";
 import { arr } from "@/components/drawer";
 import { createClient } from "@supabase/supabase-js";
@@ -23,6 +24,7 @@ import {
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 export const Logo = () => {
   return (
@@ -70,6 +72,7 @@ export default function SidebarDemo() {
     },
   ];
   const [open, setOpen] = useState(false);
+  const { data: session, status } = useSession();
   return (
     <div
       className={cn(
@@ -91,7 +94,7 @@ export default function SidebarDemo() {
           <div>
             <SidebarLink
               link={{
-                label: "Manu Arora",
+                label: session.user.name,
                 href: "#",
               }}
             />
@@ -112,6 +115,7 @@ const BookParking = () => {
     process.env.NEXT_PUBLIC_SUPABASE_URL,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   );
+  const router = useRouter();
   const arr_id = arr;
   console.log("arr");
   console.log(arr_id);
@@ -188,6 +192,7 @@ const BookParking = () => {
           alert(
             `QR Code scanned successfully! Remaining bookings: ${counter - 1}`
           );
+          router.push("/payment");
           // Reset booking status and QR code
           setIsBooked(false);
           setQrCode("");
@@ -243,30 +248,35 @@ const BookParking = () => {
             )}
           </CardFooter>
         </Card>
-        <Card className="w-[350px]">
-          <CardHeader>
-            <CardTitle>{places[1]}</CardTitle>
-            <CardDescription>
-              Remaining spots {slots[1]} <br />
-              Pricing per hour {pricing[1]}
-            </CardDescription>
-          </CardHeader>
-          <CardFooter className="flex justify-end">
-            <Button>Book</Button>
-          </CardFooter>
-        </Card>
-        <Card className="w-[350px]">
-          <CardHeader>
-            <CardTitle>{places[2]}</CardTitle>
-            <CardDescription>
-              Remaining spots {slots[2]} <br />
-              Pricing per hour {pricing[2]}
-            </CardDescription>
-          </CardHeader>
-          <CardFooter className="flex justify-end">
-            <Button>Book</Button>
-          </CardFooter>
-        </Card>
+        {isVisible && (
+          <>
+            <Card className="w-[350px]">
+              <CardHeader>
+                <CardTitle>{places[1]}</CardTitle>
+                <CardDescription>
+                  Remaining spots {slots[1]} <br />
+                  Pricing per hour {pricing[1]}
+                </CardDescription>
+              </CardHeader>
+              <CardFooter className="flex justify-end">
+                <Button>Book</Button>
+              </CardFooter>
+            </Card>
+            <Card className="w-[350px]">
+              <CardHeader>
+                <CardTitle>{places[2]}</CardTitle>
+                <CardDescription>
+                  Remaining spots {slots[2]} <br />
+                  Pricing per hour {pricing[2]}
+                </CardDescription>
+              </CardHeader>
+              <CardFooter className="flex justify-end">
+                <Button>Book</Button>
+              </CardFooter>
+            </Card>
+          </>
+        )}
+
         {/* <Card className="w-[350px]">
           <CardHeader>
             <CardTitle>{places[3]}</CardTitle>
