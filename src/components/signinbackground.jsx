@@ -33,7 +33,7 @@ const AuroraBackgroundDemo = () => {
           action={googleSignIn}
         >
           <Button
-            className="flex gap-3 items-center justify-center bg-black dark:bg-white text-white dark:text-black rounded-full px-4 py-2"
+            className="flex gap-3 items-center justify-center bg-purple-600 dark:bg-white text-white dark:text-black rounded-full px-4 py-2"
             type="submit"
           >
             <FaGoogle />

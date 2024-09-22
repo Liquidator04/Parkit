@@ -416,7 +416,7 @@ function Page() {
       <br />
       <div className="flex justify-between items-center w-full  style={{ backgroundImage: `url(${home.src})` }}">
         <Image
-          className="ml-8 rounded-full"
+          className="ml-8"
           src={logo}
           alt="Picture of the author"
           width={100}
