@@ -11,7 +11,7 @@ export default function Dashboard() {
 
   const { data: session, status } = useSession();
   if (status === "authenticated") {
-    console.log("User Details:", session.user); // User's email, name, image, etc.
+    console.log("User Details:", session?.user); // User's email, name, image, etc.
     return (
       <div>
         {/* <BackgroundLines/> */}

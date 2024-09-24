@@ -73,6 +73,7 @@ export default function SidebarDemo() {
   ];
   const [open, setOpen] = useState(false);
   const { data: session, status } = useSession();
+  const router = useRouter();
   return (
     <div
       className={cn(
@@ -94,7 +95,7 @@ export default function SidebarDemo() {
           <div>
             <SidebarLink
               link={{
-                label: session.user.name,
+                label: session?.user.name,
                 href: "#",
               }}
             />

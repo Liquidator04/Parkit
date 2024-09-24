@@ -47,7 +47,7 @@ export function WavyBackgroundDemo() {
               <p className="mt-40 text-2xl md:text-4xl lg:text-7xl text-white font-bold inter-var text-center">
                 Hello,{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-sky-500">
-                  {session.user.name}
+                  {session?.user.name}
                 </span>
               </p>
               <p className="text-base md:text-lg mt-4 text-white font-normal inter-var text-center">
