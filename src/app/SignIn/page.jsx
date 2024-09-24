@@ -3,9 +3,6 @@ import { BackgroundBoxesDemo } from "@/components/backgroundsignin";
 function page() {
   return (
     <div>
-      
-      
-     
       <SignIn />
     </div>
   );
