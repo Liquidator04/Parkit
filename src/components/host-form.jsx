@@ -60,7 +60,7 @@ export function ProfileForm() {
   }
 
   return (
-    <div className="max-w-md mt-20 w-full mx-auto p-6 rounded-2xl shadow-input bg-white dark:bg-black">
+    <div className="max-w-md md:mt-20 w-full mx-auto p-6 rounded-2xl shadow-input bg-white dark:bg-black">
       <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
         Parking Details
       </h2>

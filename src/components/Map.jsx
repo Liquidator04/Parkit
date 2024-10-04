@@ -37,7 +37,7 @@ const Map = () => {
   }, [lat, lng, zoom]);
 
   return (
-    <div className="ml-10 w-3/4">
+    <div className="md:ml-10 md:w-3/4 w-full h-full">
       {/* Map container div */}
       <div
         ref={mapContainer}

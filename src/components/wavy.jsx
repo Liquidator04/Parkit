@@ -22,8 +22,8 @@ export function WavyBackgroundDemo() {
   return (
     <div className="flex max-w-full  max-h-screen overflow-hidden">
       <div className="">
-        <div className=" flex items-start w-screen">
-          <div className="w-1/2">
+        <div className="flex md:flex-row flex-col items-start w-screen">
+          <div className="md:w-1/2 w-full pr-5">
             <div className="flex justify-between items-center mt-10">
               <div className="flex space-x-4 ml-10 mr-3">
                 <Button
@@ -43,8 +43,8 @@ export function WavyBackgroundDemo() {
                 Sign Out
               </Button>
             </div>
-            <div className="ml-10">
-              <p className="mt-40 text-2xl md:text-4xl lg:text-7xl text-white font-bold inter-var text-center">
+            <div className="m-10">
+              <p className="md:mt-40 mt-10 text-2xl md:text-4xl lg:text-7xl text-white font-bold inter-var text-center">
                 Hello,{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-sky-500">
                   {session?.user.name}
@@ -54,7 +54,7 @@ export function WavyBackgroundDemo() {
                 Leverage Parkit to get hassel free parking.
               </p>
             </div>
-            <div className="flex justify-center mt-5">
+            <div className="flex justify-center mt-5 mb-10">
               <DrawerDemo />
             </div>
           </div>

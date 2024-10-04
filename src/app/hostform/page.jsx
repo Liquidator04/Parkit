@@ -19,11 +19,11 @@ export default function Page() {
           </h1>
         </div>
       </div>
-      <div className="flex items-center justify-between max-w-7xl mx-auto p-4 relative mt-15">
+      <div className="flex items-center justify-between max-w-7xl mx-auto p-4 relative md:mt-15 mt-7">
         {/* Glowing line */}
         <div className="absolute left-0 top-0 h-full w-2 bg-gradient-to-b from-blue-400 to-blue-600 shadow-glow" />
 
-        <div className="w-1/2 pr-4 mt-16">
+        <div className="md:visible collapse md:w-1/2 md:pr-4 md:mt-16 w-0">
           <Image
             src={signinimage}
             alt="Description of the image"
@@ -32,7 +32,7 @@ export default function Page() {
             className="rounded-lg"
           />
         </div>
-        <div className="w-1/2 pl-4">
+        <div className="md:w-1/2 md:pl-4">
           <ProfileForm />
         </div>
       </div>

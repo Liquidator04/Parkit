@@ -432,12 +432,9 @@ function Page() {
         </div>
       </div>
 
-      <div className="flex justify-between items-start mt-20">
-        <div className="flex-1 h-screen">
-          <World data={sampleArcs} globeConfig={globeConfig} />
-        </div>
-        <div className="flex flex-col justify-center items-center flex-1 mt-20">
-          <h1 className="text-center text-5xl md:text-7xl font-bold text-white-800 mt-20">
+      <div className="flex flex-col md:flex md:flex-row justify-between items-start mt-20">
+        <div className="flex flex-col justify-center items-center flex-1 m-2 w-full">
+          <h1 className="text-center text-4xl md:text-7xl font-bold text-white-800">
             Find your{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
               Parking
@@ -452,6 +449,9 @@ function Page() {
           >
             Get Started
           </Button>
+        </div>
+        <div className="flex-1 h-screen w-screen">
+          <World data={sampleArcs} globeConfig={globeConfig} />
         </div>
       </div>
     </>
