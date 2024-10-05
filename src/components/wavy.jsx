@@ -51,7 +51,7 @@ export function WavyBackgroundDemo() {
                 </span>
               </p>
               <p className="text-base md:text-lg mt-4 text-white font-normal inter-var text-center">
-                Leverage Parkit to get hassel free parking.
+                Leverage Parkit to get hassle free parking.
               </p>
             </div>
             <div className="flex justify-center mt-5 mb-10">
